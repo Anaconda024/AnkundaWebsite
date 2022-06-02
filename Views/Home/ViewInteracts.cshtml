@@ -1,0 +1,75 @@
+﻿@model IEnumerable<AnkundaWebsite2.Models.InteractVM>
+
+@{
+    ViewData["Title"] = "Interacts";
+}
+
+
+<div class="container " id="home-section">
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    <h1 class="">Interactions</h1>
+
+
+    <p>
+
+    </p>
+    <table id="tblData" class="table table-bordered edited-table">
+        <thead>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CellNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Message)
+                </th>
+                <th>
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CellNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+
+                        <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="form-inline">
+                            <button type="submit" class="btn btn-outline-danger" onclick=" return confirm('Are you sure you want to delete this booking?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
